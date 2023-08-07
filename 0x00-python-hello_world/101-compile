@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+import sys
+import py_compile
+import os
+
+if 'PYFILE' not in os.environ or not os.environ['PYFILE']:
+    sys.stderr.write("Error: PYFILE environment variable is not set or empty.\n")
+    sys.exit(1)
+
+py_file = os.environ['PYFILE']
+output_file = py_file + 'c'
+
+try:
+    py_compile.compile(py_file, cfile=output_file)
+except Exception as e:
+    sys.stderr.write(f"Error: Failed to compile {py_file}: {e}\n")
+    sys.exit(1)
+
+sys.stdout.write(f"Compiling {py_file} ...\n")
