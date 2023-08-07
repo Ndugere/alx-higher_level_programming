@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Check if the PYFILE environment variable is set and not empty
+# Angalia kama kipengele cha mazingira cha PYFILE kimeandaliwa na si tupu
+if [ -z "$PYFILE" ]; then
+  echo "Error: PYFILE environment variable is not set or empty."
+  exit 1
+fi
+
+# Check if the specified Python file exists
+# Angalia kama faili ya Python iliyotajwa ipo
+if [ ! -f "$PYFILE" ]; then
+  echo "Error: Python file '$PYFILE' not found."
+  exit 1
+fi
+
+# Run the Python script
+# Tekeleza scripti ya Python
+python3 "$PYFILE"
