@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+"""Unittest for lazy_matrix_mul([..])
+"""
+import unittest
+from io import StringIO
+from contextlib import redirect_stdout
+from models.rectangle import Rectangle
+
+lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+class TestLazyMatrixMul(unittest.TestCase):
+    def test_matrix_multiplication(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[1, 2], [3, 4]]
+        result = lazy_matrix_mul(m_a, m_b)
+        self.assertEqual(result, [[7, 10], [15, 22]])
+
+        m_a = [[1, 2]]
+        m_b = [[3, 4], [5, 6]]
+        result = lazy_matrix_mul(m_a, m_b)
+        self.assertEqual(result, [[13, 16]])
+
+if __name__ == '__main__':
+    unittest.main()
