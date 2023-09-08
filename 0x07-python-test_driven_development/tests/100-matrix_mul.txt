@@ -1,0 +1,9 @@
+# Test cases for matrix_mul function
+
+# Test Case 1: Multiply two 2x2 matrices
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+# Test Case 2: Multiply a 1x2 matrix and a 2x2 matrix
+>>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
