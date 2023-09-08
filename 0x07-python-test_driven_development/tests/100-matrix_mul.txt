@@ -7,3 +7,46 @@
 # Test Case 2: Multiply a 1x2 matrix and a 2x2 matrix
 >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
 [[13, 16]]
+
+# Test Case 3: Multiply two 1x1 matrices
+>>> matrix_mul([[5]], [[7]])
+[[35]]
+
+# Test Case 4: Multiply a 2x2 matrix by a 2x3 matrix
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6]])
+[[9, 12, 15], [19, 26, 33]]
+
+# Test Case 5: Multiply two 3x3 matrices
+>>> matrix_mul([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[9, 8, 7], [6, 5, 4], [3, 2, 1]])
+[[30, 24, 18], [84, 69, 54], [138, 114, 90]]
+
+# Test Case 6: Multiply a matrix by an empty matrix
+>>> matrix_mul([[1, 2], [3, 4]], [])
+ValueError: m_b can't be empty
+
+# Test Case 7: Multiply an empty matrix by a matrix
+>>> matrix_mul([], [[1, 2], [3, 4]])
+ValueError: m_a can't be empty
+
+# Test Case 8: Multiply a matrix by a non-list
+>>> matrix_mul([[1, 2], [3, 4]], 5)
+TypeError: m_b must be a list
+
+# Test Case 9: Multiply a non-list by a matrix
+>>> matrix_mul(5, [[1, 2], [3, 4]])
+TypeError: m_a must be a list
+
+# Test Case 10: Multiply a matrix with a row of different size
+>>> matrix_mul([[1, 2, 3], [4, 5], [6, 7, 8]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+TypeError: each row of m_a must be of the same size
+
+# Test Case 11: Multiply matrices that cannot be multiplied
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4], [5, 6]])
+ValueError: m_a and m_b can't be multiplied
+
+# Test Case 12: Multiply matrices with non-integer or non-float elements
+>>> matrix_mul([["a", "b"], ["c", "d"]], [[1, 2], [3, 4]])
+TypeError: m_a should contain only integers or floats
+>>> matrix_mul([[1, 2], [3, 4]], [["e", "f"], ["g", "h"]])
+TypeError: m_b should contain only integers or floats
+These test cases aim to cover various scenarios, including valid multiplications, error cases, and edge cases.
