@@ -19,6 +19,7 @@ queen must be placed on the chessboard.
 """
 import sys
 
+
 def init_board(n):
     """Initialize an `n`x`n` sized chessboard with 0's."""
     board = []
@@ -26,11 +27,13 @@ def init_board(n):
     [row.append(' ') for i in range(n) for row in board]
     return board
 
+
 def board_deepcopy(board):
     """Return a deepcopy of a chessboard."""
     if isinstance(board, list):
         return list(map(board_deepcopy, board))
     return board
+
 
 def get_solution(board):
     """Return the list of lists representation of a solved chessboard."""
@@ -39,8 +42,8 @@ def get_solution(board):
         for c in range(len(board)):
             if board[r][c] == "Q":
                 solution.append([r, c])
-                break
     return solution
+
 
 def xout(board, row, col):
     """X out spots on a chessboard.
@@ -77,7 +80,7 @@ def xout(board, row, col):
     for r in range(row - 1, -1, -1):
         if c < 0:
             break
-        board[r][c] = "x"
+        board[r][c]
         c -= 1
     # X out all spots diagonally up to the right
     c = col + 1
@@ -93,6 +96,7 @@ def xout(board, row, col):
             break
         board[r][c] = "x"
         c -= 1
+
 
 def recursive_solve(board, row, queens, solutions):
     """Recursively solve an N-queens puzzle.
@@ -114,15 +118,27 @@ def recursive_solve(board, row, queens, solutions):
             tmp_board = board_deepcopy(board)
             tmp_board[row][c] = "Q"
             xout(tmp_board, row, c)
-            solutions = recursive_solve(tmp_board, row + 1,
-                                        queens + 1, solutions)
+            solutions = recursive_solve(tmp_board, row + 1, queens + 1, solutions)
 
     return solutions
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-    if sys.argv[1].isdigit() is False:
+    if not sys.argv[1].isdigit():
         print("N must be a number")
         sys.exit(1)
+    N = int(sys.argv[1])
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+
+    board = init_board(N)
+    solutions = recursive_solve(board, 0, 0, [])
+    for solution in solutions:
+        for row in solution:
+            board_row = [col for r, col in row]
+            print(board_row)
+        print()
